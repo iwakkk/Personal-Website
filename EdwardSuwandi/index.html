@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Edward Suwandi</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="vendors/linericon/style.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
+        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+        <link rel="stylesheet" href="vendors/animate-css/animate.css">
+        <link rel="stylesheet" href="vendors/flaticon/flaticon.css">
+        <!-- main css -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+    </head>
+    <body>
+        
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+            <div class="main_menu" id="mainNav">
+            	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: black;">
+					<div class="container box_1620">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="index.html"><img src="img/Putih.png" alt="" style="width: 100px;"></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item active"><a class="nav-link" href="index.html" id="current">Home</a></li> 
+								<li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li> 
+								<li class="nav-item"><a class="nav-link" href="services.html">Portfolio</a>
+								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+							</ul>
+						</div> 
+					</div>
+            	</nav>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="home_banner_area">
+            <div class="banner_inner">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="home_left_img">
+								<img src="img/banner/home-left-1.png" alt="">
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="banner_content">
+								<h5>Who is</h5>
+								<h2>Edward Suwandi ?</h2>
+								<p>This is my personal website and i hope you can enjoy reading my profile with this website. Click the button below to discover all about me.</p>
+								<a class="banner_btn" href="about-us.html">Discover Now</a>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+<!--================Testimonials Area =================-->
+<section class="testimonials_area testi_two p_120">
+    <div class="container">
+        <div class="main_title">
+            <h2>Reviews</h2>
+            <p>Here are some reviews from people about this website.</p>
+            <div id="reviewsContainer" class="review-list"></div> <!-- Add review-list class -->
+        </div>
+    </div>
+</section>
+<!--================End Testimonials Area =================-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+   $(document).ready(function() {
+    // Fetch reviews from fetch_reviews.php
+    $.ajax({
+        url: 'fetch_reviews.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            // Process retrieved reviews
+            if (data.length > 0) {
+                var reviewsHtml = '';
+                data.forEach(function(review) {
+                    reviewsHtml += `
+                        <div class="review-item">
+                            <div class="review-header">${review.name}</div>
+                            <div class="review-body">${review.review}</div>
+                        </div>`;
+                });
+                $('#reviewsContainer').html(reviewsHtml);
+            } else {
+                $('#reviewsContainer').html('<p>No reviews available.</p>');
+            }
+        },
+        error: function() {
+            $('#reviewsContainer').html('<p>Error fetching reviews.</p>');
+        }
+    });
+});
+</script>
+
+                <!--================Footer Area =================-->
+                <footer class="footer_area p_120">
+                    <div class="container">
+                        <div class="row footer_inner">
+                            <div class="col-lg-5 col-sm-6">
+                                <aside class="f_widget ab_widget">
+                                    <div class="f_title">
+                                        <h3>About This Webiste</h3>
+                                    </div>
+                                    <p>This is my first time building a website. I really hope you can enjoy reading my profile through this website. I'd really love to hear your opinion about this website, so i can improve my skill to build a website. </p>
+                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+                                </aside>
+                            </div>
+                            <div class="col-lg-5 col-sm-6">
+                                <aside class="f_widget news_widget">
+                                    <div class="f_title">
+                                        <h3>Reviews</h3>
+                                    </div>
+                                    <p>Revies To This Website</p>
+                                    <div id="mc_embed_signup">
+                                        <form action="insert_review.php" method="POST" class="subscribe_form relative">
+                                            <div class="input-group d-flex flex-row">
+                                                <input name="name"  placeholder = 'Enter Your Name'" required="" type="text" style="color: black;">
+                                            </div>			
+                                            <br>
+                                            <div class="input-group d-flex flex-row">
+                                                <input name="review" placeholder = 'Enter Your Review'" required="" type="text" style="color: black;"">
+                                                <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>		
+                                            </div>		
+                                            <div class="mt-10 info"></div>
+                                        </form>
+                                    </div>
+                                </aside>
+                            </div>
+                            <div class="col-lg-2">
+                                <aside class="f_widget social_widget">
+                                    <div class="f_title">
+                                        <h3>Follow Me</h3>
+                                    </div>
+                                    <p>Let us be social</p>
+                                    <ul class="list">
+                                        <li><a href="https://wa.me/6287851090074"><i class="fa fa-whatsapp"></i></a></li>
+                                        <li><a href="https://instagram.com/edwardsuwandi_"><i class="fa fa-instagram"></i></a></li>
+                                    </ul>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!--================End Footer Area =================-->
+        
+        
+        
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/stellar.js"></script>
+        <script src="vendors/lightbox/simpleLightbox.min.js"></script>
+        <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
+        <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
+        <script src="vendors/isotope/isotope-min.js"></script>
+        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
+        <script src="vendors/counter-up/jquery.counterup.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+         <script>
+            $(document).ready(function() {
+                // Fetch reviews from fetch_reviews.php
+                $.ajax({
+                    url: 'fetch_reviews.php',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        // Process retrieved reviews
+                        if (data.length > 0) {
+                            var reviewsHtml = '<div class="review-list">';
+                            data.forEach(function(review) {
+                                reviewsHtml += `
+                                    <div class="review-item">
+                                        <div class="review-header">${review.name}</div>
+                                        <div class="review-body">${review.review}</div>
+                                    </div>`;
+                            });
+                            reviewsHtml += '</div>';
+                            $('#reviewsContainer').html(reviewsHtml);
+                        } else {
+                            $('#reviewsContainer').html('<p>No reviews available.</p>');
+                        }
+                    },
+                    error: function() {
+                        $('#reviewsContainer').html('<p>Error fetching reviews.</p>');
+                    }
+                });
+            });
+        </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("#mc_embed_signup form");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Prepare form data
+        const formData = new FormData(form);
+
+        // Send form data using fetch API
+        fetch(form.action, {
+            method: form.method,
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle response from server
+            if (data.success) {
+                // Show success notification using SweetAlert2
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Review submitted successfully!',
+                });
+                form.reset(); // Reset form
+            } else {
+                // Show error notification using SweetAlert2
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: 'Error: ' + data.message,
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            // Show error notification using SweetAlert2
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Error submitting review',
+            });
+        });
+    });
+});
+
+            </script>
+        
+        <!--gmaps Js-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+        <script src="js/gmaps.min.js"></script>
+        <script src="js/theme.js"></script>
+    </body>
+</html>
+
